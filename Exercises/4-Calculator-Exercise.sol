@@ -8,6 +8,19 @@ pragma solidity ^0.8.0;
 // 4️⃣ Create a function to get result
 
 contract Calculator {
-    uint256 public result;
+    uint256 public result=0;
 
+    function add(uint num)public {
+        result+=num;
+    }
+    function subtract(uint num)public{
+        result-=num;
+    }
+    function multiply(uint num)public{
+        result*=num;
+    }
+
+    function get()public view returns (uint ){
+        return result;
+    }
 }

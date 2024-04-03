@@ -20,6 +20,7 @@ contract Twitter {
     function createTweet(string memory _tweet) public {
         // conditional
         // if tweet length <= 280 then we are good, otherwise we revert
+        require(bytes(_tweet).length <=280,"your tweet is too long");
         
 
         Tweet memory newTweet = Tweet({
