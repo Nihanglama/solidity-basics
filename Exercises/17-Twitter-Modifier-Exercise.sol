@@ -10,8 +10,19 @@ pragma solidity ^0.8.0;
 
 contract Twitter {
 
-    uint16 constant MAX_TWEET_LENGTH = 280;
+    uint16 public MAX_TWEET_LENGTH = 280;
+    address public owner;
+    constructor(){
+        owner =msg.sender;
+    }
+    modifier onlyOwner(){
+        require(msg.sender==owner);
+        _;
+    }
 
+    function changeTweetLength(uint16 newTweetLength)public onlyOwner{
+        MAX_TWEET_LENGTH=newTweetLength;
+    }
     struct Tweet {
         address author;
         string content;
