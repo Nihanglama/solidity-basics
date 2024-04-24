@@ -17,20 +17,22 @@ contract MultiplayerGame {
 }
 
 // Game contract inheriting from MultiplayerGame
-contract Game {
+contract Game is MultiplayerGame{
     string public gameName;
     uint256 public playerCount;
 
     constructor(string memory _gameName) {
         gameName = _gameName;
-        playerCount = 0;
+        playerCount = 0;   
     }
 
     function startGame() public {
         // Perform game-specific logic here
     }
 
-    // function joinGame() public override {
-       
-    // }
+    function joinGame() public override {
+        super.joinGame();
+        // add our own function
+        playerCount++;
+    }
 }
